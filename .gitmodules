@@ -1,0 +1,3 @@
+[submodule "external/logme"]
+  path = external/logme
+  url = https://github.com/efmsoft/logme.git
