@@ -1,5 +1,7 @@
 # logme CMake Submodule Example
 
+![Example output](view.png)
+
 This repository demonstrates a **minimal and correct** way to integrate
 [logme](https://github.com/efmsoft/logme) into a CMake-based C++ project.
 
