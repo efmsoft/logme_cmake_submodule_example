@@ -40,9 +40,11 @@ external/logme/logme
 
 Clone the example and initialize submodules:
 
+```bash
 git clone https://github.com/efmsoft/logme_cmake_submodule_example.git
 cd logme_cmake_submodule_example
 git submodule update --init --recursive
+```
 
 ---
 
