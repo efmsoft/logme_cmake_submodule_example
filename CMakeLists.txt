@@ -11,6 +11,11 @@ set(CMAKE_CXX_EXTENSIONS OFF)
 # logme static library lives in: external/logme/logme
 add_subdirectory(external/logme/logme)
 
+target_compile_definitions(logme
+  PRIVATE
+    LOGME_DISABLE_STD_FORMAT
+)
+
 add_executable(example
   src/main.cpp
 )
