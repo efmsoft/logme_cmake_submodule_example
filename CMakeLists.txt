@@ -20,6 +20,8 @@ add_executable(example
   src/main.cpp
 )
 
+target_compile_definitions(example PRIVATE LOGME_DISABLE_STD_FORMAT)
+
 target_include_directories(example
   PRIVATE
     external/logme/logme/include
