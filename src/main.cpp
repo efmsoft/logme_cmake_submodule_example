@@ -7,5 +7,9 @@ int main()
   LogmeE("This is a demonstration error message (example only)");
   LogmeI("Example finished successfully");
 
+#ifndef LOGME_DISABLE_STD_FORMAT
+  fLogmeI("This message is shown only when std::format is supported by the system");
+#endif
+
   return 0;
 }
