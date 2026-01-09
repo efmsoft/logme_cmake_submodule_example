@@ -98,4 +98,6 @@ if (USE_JSONCPP)
   if (TARGET logmed)
     target_link_libraries(logmed PUBLIC ${JsoncppTarget})
   endif()
+
+  target_link_libraries(example PUBLIC ${JsoncppTarget})
 endif()
