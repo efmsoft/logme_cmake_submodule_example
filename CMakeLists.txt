@@ -52,6 +52,15 @@ if(USE_JSONCPP)
 
   add_subdirectory(external/jsoncpp)
   add_definitions(-DUSE_JSONCPP)
+  
+  # Force C++20 on jsoncpp targets
+  if(TARGET jsoncpp_static)
+    set_target_properties(jsoncpp_static PROPERTIES
+      CXX_STANDARD 20
+      CXX_STANDARD_REQUIRED ON
+      CXX_EXTENSIONS OFF
+    )
+  endif()
 endif()
 
 add_subdirectory(external/logme)
