@@ -15,6 +15,11 @@
           "name": "LOGME_LINKAGE",
           "value": "SHARED",
           "type": "STRING"
+        },
+        {
+          "name": "USE_ALLSTAT",
+          "value": "False",
+          "type": "BOOL"
         }
       ]
     }

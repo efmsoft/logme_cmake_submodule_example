@@ -1,3 +1,9 @@
 [submodule "external/logme"]
 	path = external/logme
 	url = https://github.com/efmsoft/logme.git
+[submodule "external/allstat"]
+	path = external/allstat
+	url = https://github.com/efmsoft/allstat.git
+[submodule "external/jsoncpp"]
+	path = external/jsoncpp
+	url = https://github.com/open-source-parsers/jsoncpp.git
