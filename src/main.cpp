@@ -2,7 +2,7 @@
 #include <Logme/Template.h>
 #include <Logme/AnsiColorEscape.h>
 
-void ConfigDemo();
+static void ConfigDemo();
 
 int main(int argc, char* argv[])
 {
