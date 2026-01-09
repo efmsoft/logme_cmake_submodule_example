@@ -9,8 +9,8 @@ set(CMAKE_CXX_EXTENSIONS OFF)
 set(LOGME_LINKAGE "STATIC" CACHE STRING "How to link logme: STATIC or SHARED")
 set_property(CACHE LOGME_LINKAGE PROPERTY STRINGS STATIC SHARED)
 
-set(USE_ALLSTAT ON CACHE BOOL "Use AllStat library")
-set(USE_JSONCPP ON CACHE BOOL "Use JSONCPP library")
+set(USE_ALLSTAT OFF CACHE BOOL "Use AllStat library")
+set(USE_JSONCPP OFF CACHE BOOL "Use JSONCPP library")
 
 # -------
 
@@ -28,6 +28,10 @@ else()
 endif()
 
 if(USE_ALLSTAT)
+  if (NOT EXISTS ${CMAKE_CURRENT_SOURCE_DIR}/external/allstat/cmake/Findallstat.cmake)
+    message(FATAL_ERROR "USE_ALLSTAT=ON but external/allstat is missing. Run: git submodule update --init --recursive (or disable USE_ALLSTAT).")
+  endif()
+
   list(APPEND CMAKE_MODULE_PATH  ${CMAKE_CURRENT_SOURCE_DIR}/external/allstat/cmake) 
   find_package(allstat MODULE)
 
@@ -36,6 +40,10 @@ if(USE_ALLSTAT)
 endif()
 
 if(USE_JSONCPP)
+  if (NOT EXISTS ${CMAKE_CURRENT_SOURCE_DIR}/external/jsoncpp/CMakeLists.txt)
+    message(FATAL_ERROR "USE_JSONCPP=ON but external/jsoncpp is missing. Run: git submodule update --init --recursive (or disable USE_JSONCPP).")
+  endif()
+
   set(BUILD_SHARED_LIBS OFF CACHE BOOL "" FORCE)
   set(BUILD_OBJECT_LIBS OFF CACHE BOOL "" FORCE)
   set(JSONCPP_WITH_TESTS OFF CACHE BOOL "" FORCE)
@@ -73,11 +81,21 @@ if(USE_ALLSTAT)
 endif()
 
 if (USE_JSONCPP)
+  if (TARGET JsonCpp::JsonCpp)
+    set(JsoncppTarget JsonCpp::JsonCpp)
+  elseif (TARGET jsoncpp_lib)
+    set(JsoncppTarget jsoncpp_lib)
+  elseif (TARGET jsoncpp_static)
+    set(JsoncppTarget jsoncpp_static)
+  else()
+    message(FATAL_ERROR "USE_JSONCPP=ON but no jsoncpp target was created.")
+  endif()
+
   if (TARGET logme)
-    target_link_libraries(logme PUBLIC jsoncpp_static)
+    target_link_libraries(logme PUBLIC ${JsoncppTarget})
   endif()
 
   if (TARGET logmed)
-    target_link_libraries(logmed PUBLIC jsoncpp_static)
+    target_link_libraries(logmed PUBLIC ${JsoncppTarget})
   endif()
 endif()

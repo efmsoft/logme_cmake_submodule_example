@@ -62,8 +62,9 @@ Enables jsoncpp integration. When enabled:
   - creating a log file on disk
   - setting variables from code and using them during configuration loading
 
-This integration is **optional**. If your project does not load logme configuration from JSON,
-you can keep it **OFF**.
+This integration is **optional**. Default in this example: **OFF**.
+
+If your project does not load logme configuration from JSON, you can keep it **OFF**.
 
 Usage:
 
@@ -79,7 +80,7 @@ Enables AllStat integration. When enabled:
 - AllStat is used to print error codes not only as numbers, but also as named constants
 - the example code demonstrates formatting of `errno` values
 
-This integration is **optional**.
+This integration is **optional**. Default in this example: **OFF**.
 
 Usage:
 
@@ -149,4 +150,5 @@ target_compile_definitions(example PRIVATE LOGME_INRELEASE)
 
 ## License
 
-This repository is provided as an example. See `LICEN
+This repository is provided as an example. See `LICENSE`.
+
